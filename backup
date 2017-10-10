@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source config --source-only
+for f in $BBACK_PATH/libraries/*; do source $f; done
+
+

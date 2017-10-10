@@ -1,0 +1,26 @@
+# Mailjet library for sent email
+function send_email_mailjet {
+curl -s \
+  -X POST \
+  --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \
+  https://api.mailjet.com/v3.1/send \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "Messages":[
+        {
+            "From": {
+                "Email": "'$EMAIL_FROM'",
+                "Name": "'$EMAIL_NAME'"
+            },
+            "To": [
+                {
+                    "Email": "'$EMAIL_TO'",
+                    "Name": "'$EMAIL_TO_NAME'"
+                }
+            ],
+            "Subject": "'$EMAIL_SUBJECT'",
+            "TextPart": "'$EMAIL_TEXT'",
+        }
+    ]
+  }'
+}
